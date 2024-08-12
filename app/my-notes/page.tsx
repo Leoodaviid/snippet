@@ -1,10 +1,12 @@
-import { UserButton } from "@clerk/nextjs";
 import React from "react";
+import Sidebar from "../components/sidebar";
+import ContentArea from "../components/contentArea";
 
 const MyNotesPage = () => {
   return (
-    <div>
-      <UserButton />
+    <div className="flex">
+      <Sidebar />
+      <ContentArea />
     </div>
   );
 };

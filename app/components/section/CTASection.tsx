@@ -5,7 +5,10 @@ const CTASection = () => {
     <div className="flex flex-col mx-16 mt-28 gap-6 items-center">
       <h2 className="font-bold text-2xl text-center">
         Organize your Code Snippets
-        <span className="text-blue-500"> Efficiently!</span>
+        <span className="text-blue-light dark:text-blue-dark">
+          {" "}
+          Efficiently!
+        </span>
       </h2>
       <p>
         With our advanced tagging and search features, you can quickly find the
