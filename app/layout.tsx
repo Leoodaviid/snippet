@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Poppins } from "next/font/google";
 import "./globals.css";
-import { ClerkProvider } from "@clerk/nextjs";
+import Providers from "./providers";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -22,10 +22,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <ClerkProvider>
-      <html lang="en">
-        <body className={poppins.className}>{children}</body>
-      </html>
-    </ClerkProvider>
+    <html lang="en">
+      <Providers>
+        <body className={poppins.className}>
+          <main className="bg-primary-light dark:bg-primary-dark">
+            {children}
+          </main>
+        </body>
+      </Providers>
+    </html>
   );
 }
