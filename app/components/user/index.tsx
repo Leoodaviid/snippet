@@ -32,7 +32,9 @@ const ProfileUser = () => {
           className="rounded-full"
         />
       )}
-      <div className={`flex flex-col text-sm ${!user ? "gap-1" : ""}`}>
+      <div
+        className={`hidden sm:flex flex-col text-sm ${!user ? "gap-1" : ""}`}
+      >
         {!user ? (
           loadingUserName
         ) : (

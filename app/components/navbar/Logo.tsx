@@ -5,7 +5,7 @@ const Logo = () => {
   return (
     <div className="flex gap-2 items-center">
       <div className={`bg-blue-light dark:bg-blue-dark p-[6px] rounded-md`}>
-        <FaCode size={20} />
+        <FaCode size={20} className="text-white" />
       </div>
       <div className="flex gap-1 text-xl">
         <span className="font-bold text-blue-light dark:text-blue-dark">
