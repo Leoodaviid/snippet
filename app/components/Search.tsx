@@ -1,5 +1,6 @@
 import React from "react";
 import { FiSearch } from "react-icons/fi";
+import { IoIosAdd } from "react-icons/io";
 
 const Search = () => {
   return (
@@ -17,9 +18,11 @@ const Search = () => {
 
 function AddSnippetButton() {
   return (
-    <div className="absolute flex gap-2 px-3 rounded-3xl bg-blue-light dark:bg-blue-dark p-1 text-sm text-white top-[5px] right-[6px] items-center cursor-pointer select-none">
-      <div className="font-bold">+</div>
-      <div>Snippet</div>
+    <div className="absolute flex sm:gap-1 px-1 sm:pr-2 rounded-full bg-blue-light dark:bg-blue-dark p-1 text-sm text-white top-[5px] right-[6px] items-center cursor-pointer select-none">
+      <div className="font-bold">
+        <IoIosAdd size={20} />
+      </div>
+      <div className="max-md:hidden">Snippet</div>
     </div>
   );
 }

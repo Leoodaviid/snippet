@@ -23,13 +23,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <Providers>
-        <body className={poppins.className}>
-          <main className="bg-primary-light dark:bg-primary-dark">
-            {children}
-          </main>
-        </body>
-      </Providers>
+      <body className={poppins.className}>
+        <main className="bg-primary-light dark:bg-primary-dark">
+          <Providers>{children}</Providers>
+        </main>
+      </body>
     </html>
   );
 }
