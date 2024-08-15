@@ -1,16 +1,14 @@
 "use client";
 
-import { createContext, ReactNode, useContext, useState } from "react";
+import {
+  createContext,
+  ReactNode,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
 import { FaBorderAll, FaTrash } from "react-icons/fa6";
 import { MdOutlineFavorite } from "react-icons/md";
-
-interface ConfigContextType {
-  sideBarMenuObject: {
-    sideBarMenu: SideBarMenu[];
-    setSideBarMenu: React.Dispatch<React.SetStateAction<SideBarMenu[]>>;
-  };
-}
-
 interface SideBarMenu {
   id: number;
   name: string;
@@ -18,10 +16,25 @@ interface SideBarMenu {
   icons: React.ReactNode;
 }
 
+interface ConfigContextType {
+  sideBarMenuObject: {
+    sideBarMenu: SideBarMenu[];
+    setSideBarMenu: React.Dispatch<React.SetStateAction<SideBarMenu[]>>;
+  };
+  openSideBarObject: {
+    openSidebar: boolean;
+    setOpenSidebar: React.Dispatch<React.SetStateAction<boolean>>;
+  };
+}
+
 const ContextProvider = createContext<ConfigContextType>({
   sideBarMenuObject: {
     sideBarMenu: [],
     setSideBarMenu: () => {},
+  },
+  openSideBarObject: {
+    openSidebar: false,
+    setOpenSidebar: () => {},
   },
 });
 
@@ -47,10 +60,24 @@ export default function ConfigProvider({ children }: { children: ReactNode }) {
     },
   ]);
 
+  const [openSidebar, setOpenSidebar] = useState<boolean>(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 768) {
+        setOpenSidebar(false);
+      }
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   return (
     <ContextProvider.Provider
       value={{
         sideBarMenuObject: { sideBarMenu, setSideBarMenu },
+        openSideBarObject: { openSidebar, setOpenSidebar },
       }}
     >
       {children}
